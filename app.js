@@ -25,8 +25,7 @@ app.get("/", (req, res) => {
 
   res.render("index.html", {
     ids: localStorage._keys,
-    urls: getUrl,
-    qr_code: "src=" + qr_code,
+    qr_code: qr_code,
   });
 
   const url = req.query.url;
@@ -78,6 +77,3 @@ const redirectLink = (localStorage) => {
   });
 };
 
-const getUrl = (key) => {
-  return localStorage.getItem(key);
-};

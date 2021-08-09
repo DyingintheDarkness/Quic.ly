@@ -7,20 +7,18 @@
     <title>Quic.ly</title>
   </head>
   <body>
-    <form action="/" method="GET" class="input-container">
+    <form action="/" method="GET" class="input-container" id="form">
       <input type="url" name="url" id="url" value="" required />
       <button class="btn btn-submit" type="submit">Submit</button>
     </form>
 
     <div class="url-container">
-      <ul name="url-list">
-<%= urls %> 
-<%= ids %> 
+      <ul class="url-list">
+        <% ids.forEach(id => { %>
+        <li><a href=<%=id %> target="_blank">https:\\localhost:5000\<%= id %></a></li>
+        <% }) %>
       </ul>
     </div>
-<div class="qrcode-container">
-  <img src="" alt="">
-</div>
-
+    <div class="qrcode-container"><img <%=qr_code %> alt=""></div>
   </body>
 </html>

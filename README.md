@@ -1,0 +1,2 @@
+# NodeJS-Link-Shortener
+An oversized URL will look clunky pretty much anywhere you use it—in social posts, shared via text, pasted into an email.  But worse than that, long URLs also look super suspicious. With so many letters and backslashes and numbers and question marks, anything could happen when we click that link! Anything!  Keep things looking neat, tidy and, well, friendly with a URL that’s as short as possible. 

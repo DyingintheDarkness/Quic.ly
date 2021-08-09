@@ -1,0 +1,21 @@
+{
+    "name": "nodejs_link_shortener",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/DyingintheDarkness/NodeJS-Link-Shortener.git",
+    "author": "DyingintheDarkness",
+    "license": "MIT",
+    "dependencies": {
+      "express": "^4.17.1",
+      "jsonwebtoken": "^8.5.1",
+      "node-localstorage": "^2.2.1",
+      "uniqid": "^5.3.0"
+    },
+    "scripts": {
+      "auto": "nodemon app.js",
+      "start": "node app.js"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.12"
+    }
+  }

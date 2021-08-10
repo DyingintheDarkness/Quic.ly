@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css">
     <title>Quic.ly</title>
   </head>
   <body>
@@ -11,19 +12,33 @@
       <input type="url" name="url" id="url" value="" required />
       <button class="btn btn-submit" type="submit">Submit</button>
     </form>
-
+<button id="theme">Dark Mode</button>
     <div class="url-container">
       <ul class="url-list">
+        <% let current_id; %> 
       <%= ids.forEach(id => {
         if (local.getItem(id) === url) {
-          return url
+      current_id = id
+      return url, current_id
         }
       }); %>
-
+<li><a href="\history">history</a></li>
+      <li> <%= current_id %> </li>
       <li> <%= url %> </li>
       
       </ul>
     </div>
-    <div class="qrcode-container"><img src=<%=qr_code %> alt=""></div>
+    <div class="qrcode-container"><img src= <%= qr_code %> alt=""></div>
+    <script>
+const btn = document.getElementById("theme")
+btn.addEventListener("click", () => {
+    const wasDarkmode = localStorage.getItem('darkmode') === 'true';
+    localStorage.setItem('darkmode', !wasDarkmode);
+    const element = document.body;
+    element.classList.toggle('dark', !wasDarkmode);  
+  })
+  document.body.classList.toggle('dark', localStorage.getItem('darkmode') === 'true');
+
+    </script>
   </body>
 </html>

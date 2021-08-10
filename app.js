@@ -22,13 +22,15 @@ app.get("/", (req, res) => {
     var LocalStorage = require("node-localstorage").LocalStorage;
     localStorage = new LocalStorage("./localStorage");
   }
-
+  
+  const url = req.query.url;
   res.render("index.html", {
     ids: localStorage._keys,
     qr_code: qr_code,
+    url: url,
+    local: localStorage,
   });
 
-  const url = req.query.url;
   if (url !== undefined) {
     QRCode.toDataURL(url, function (err, qrcode) {
       return (qr_code = qrcode);

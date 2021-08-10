@@ -14,9 +14,14 @@
 
     <div class="url-container">
       <ul class="url-list">
-        <% ids.forEach(id => { %>
-        <li><a href=<%=id %> target="_blank">https:\\localhost:5000\<%= id %></a></li>
-        <% }) %>
+      <%= ids.forEach(id => {
+        if (local.getItem(id) === url) {
+          return url
+        }
+      }); %>
+
+      <li> <%= url %> </li>
+      
       </ul>
     </div>
     <div class="qrcode-container"><img src=<%=qr_code %> alt=""></div>

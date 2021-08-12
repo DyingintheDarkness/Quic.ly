@@ -1,18 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History</title>
-</head>
-<body>
-    <ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="\history.css" />
+    <title>Quic.ly - History</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h1>Quic.ly</h1>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="\">Home</a>
+          </li>
+          <li id="theme"><i class="fa fa-moon"></i></li>
+        </ul>
+      </nav>
+    </header>
 
-        <% ids.forEach(id => { %>
-            <li>ID: <%= id %> </li>
-            <li>URL: <%= local.getItem(id) %></li>
-            <% }) %>   
-            </ul>
-            </body>
-            </html>
+    <div class="main-container">
+      <div class="headers">
+        <h2>shortened url</h2>
+        <h2>full url</h2>
+      </div>
+
+      <div class="link-container">
+        <ul>
+          <% if (ids !== []) { %>
+            <% ids.forEach(id => { %>
+              <li>
+                <p>
+                  <i class="fas fa-link"></i>
+      <a href=<%= id %>><%= full_url %> <%= id %> </a>
+    </p>
+    <p>
+      <a href="#"> <%= local.getItem(id).substring(0, 77) + "..." %></a>
+    </p>
+    <% }) %>
+  </li>
+  <% } %>
+        </ul>
+      </div>
+    </div>
+    <script>
+
+      const btn = document.getElementById("theme")
+      btn.addEventListener("click", () => {
+        const wasDarkmode = localStorage.getItem('darkmode') === 'true';
+        localStorage.setItem('darkmode', !wasDarkmode);
+        const element = document.body;
+        element.classList.toggle('dark', !wasDarkmode);  
+      })
+      document.body.classList.toggle('dark', localStorage.getItem('darkmode') === 'true');
+      </script>
+      
+    </body>
+    </html>

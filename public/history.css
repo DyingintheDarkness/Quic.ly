@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  transition: all 300ms ease-in;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+a {
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: #000;
+}
+li {
+  list-style-type: none;
+}
+p {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+li i {
+  font-size: 2rem;
+}
+.logo {
+  margin-left: 0.5rem;
+}
+.logo h1 {
+  font-weight: 400;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+nav {
+  margin-right: 10px;
+}
+nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+nav ul li {
+  margin-left: 0.5rem;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.main-container .headers {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.link-container ul {
+  display: flex;
+  flex-direction: column;
+}
+.link-container ul li {
+  display: flex;
+  justify-content: space-between;
+  background: #e3e3e3;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.link-container ul li p,
+a {
+  font-size: 1.4rem;
+}
+.link-container ul li p:nth-child(1) {
+  width: 30%;
+  justify-content: center;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.link-container ul li p:nth-child(2) {
+  width: 70%;
+  overflow-wrap: break-word;
+  margin-right: 0.8rem;
+}
+
+.link-container ul li i {
+  color: rgb(86, 255, 86);
+}
+
+.link-container ul li:hover {
+  background: rgb(160, 160, 160);
+}
+
+body.dark {
+  background: #000;
+  color: #fff;
+}
+body.dark .link-container ul li {
+  background: #000000;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+body.dark a {
+  color: #fff;
+}
+body.dark .link-container ul li p a {
+  color: rgb(180, 180, 180);
+}
+
+@media only screen and (max-width: 1000px) {
+  .link-container ul li p:nth-child(1) > a {
+    font-size: 1rem;
+  }
+  .link-container ul li p:nth-child(2) > a {
+    font-size: 1rem;
+  }
+
+  .link-container li i {
+    font-size: 1rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 770px) {
+  .link-container ul li p:nth-child(1) {
+    font-size: 0.9rem;
+  }
+  .link-container ul li p:nth-child(2) > a {
+    font-size: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .link-container ul li p:nth-child(2),
+  a {
+    width: 50%;
+    font-size: 0.6rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+  a:not(.link-container ul li p a) {
+    font-size: 1.3rem;
+  }
+  li i {
+    font-size: 1.8rem;
+  }
+  .link-container ul li {
+    height: auto;
+  }
+  .link-container ul li p:nth-child(1) {
+    font-size: 0.8rem;
+  }
+  .link-container ul li p:nth-child(2) > a {
+    font-size: 0.7rem;
+    white-space: initial;
+  }
+  .link-container ul li {
+    gap: 2rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .link-container ul li p:nth-child(1) > a {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .link-container ul li p:nth-child(1) {
+    font-size: 0.7rem;
+    margin-left: -5%;
+  }
+  .link-container ul li p:nth-child(2) > a {
+    font-size: 0.5rem;
+  }
+}
+@media only screen and (max-width: 300px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  a:not(.link-container ul li p a) {
+    font-size: 1rem;
+  }
+  li i {
+    font-size: 1.3rem;
+  }
+  .link-container ul li p:nth-child(1) > a {
+    font-size: 0.6rem;
+  }
+  .link-container ul li p:nth-child(2) > a {
+    font-size: 0.55rem;
+  }
+}

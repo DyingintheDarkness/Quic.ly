@@ -4,34 +4,84 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.css">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/index.css" />
+
     <title>Quic.ly</title>
   </head>
   <body>
-    <form action="/" method="GET" class="input-container" id="form">
-      <input type="url" name="url" id="url" value="" required />
-      <button class="btn btn-submit" type="submit">Submit</button>
-    </form>
-<button id="theme">Dark Mode</button>
+    <header>
+      <div class="logo">
+        <h1>Quic.ly</h1>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="/history">History</a>
+          </li>
+          <li id="theme"><i class="fa fa-moon"></i></li>
+        </ul>
+      </nav>
+    </header>
     <div class="url-container">
-      <ul class="url-list">
-        <% let current_id; %> 
-      <%= ids.forEach(id => {
-        if (local.getItem(id) === url) {
-      current_id = id
-      return url, current_id
-        }
-      }); %>
-<li><a href="\history">history</a></li>
-      <li> <%= current_id %> </li>
-      <li> <%= url %> </li>
-      
-      </ul>
-    </div>
-    <div class="qrcode-container"><img src= <%= qr_code %> alt=""></div>
+      <div class="urls">
+            <br>
+            <% let current_id; %> 
+            <%= ids.forEach(id => {
+              if (local.getItem(id) === url) {
+            current_id = id
+            return url, current_id
+              }
+            }); %>
+          <% if (url !== undefined) { %>
+            <p>
+              PROVIDED URL:
+              <a href=<%= url %>>
+                <%= url.substring(0, 50) + "..." %> 
+              </a>
+            </p>
+            <p>
+              SHORTENED URL: 
+              <a href=<%= current_id %> id="shortLink">
+               <%= full_url %><%= current_id %>
+            </a>
+          </p>         
+          <% } %> 
+        </div>
+
+        <div class="form-container">
+          <form action="/" method="GET">
+            <input type="url" placeholder="Enter URL" name="url" value="" required>
+            <div class="btn-container">
+              <button type="submit" class="btn btn-submit">Shorten</button>
+              <button type="button" class="btn btn-copy">Copy</button>
+            </div>
+          </form>  
+        </div>
+
+        <div class="qrcode-container">
+          <div class="img-container">
+            <img src=<%= qr_code %> alt="">
+          </div>
+          <p>We autogenerate QR codes <br> for the urls that you provide</p>
+          <a href=<%= qr_code %>  class="btn-download" download>Download QR Code</a>
+        </div>
+        
     <script>
+      const btncopy = document.getElementsByClassName("btn-copy")[0]
+      const shortLink = document.getElementById("shortLink")
+      btncopy.addEventListener("click", (e) => {
+navigator.clipboard.writeText(shortLink)
+btncopy.innerHTML = "Copied"
+setTimeout(() => {
+  btncopy.innerHTML = "Copy"
+}, 400)
+      })
 const btn = document.getElementById("theme")
-btn.addEventListener("click", () => {
+btn.addEventListener("click", (e) => {
     const wasDarkmode = localStorage.getItem('darkmode') === 'true';
     localStorage.setItem('darkmode', !wasDarkmode);
     const element = document.body;

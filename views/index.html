@@ -67,6 +67,7 @@
             <img src=<%= qr_code %> alt="">
           </div>
           <p>We autogenerate QR codes <br> for the urls that you provide</p>
+          <% let qr = qr_code || oldqr %>
           <a href=<%= qr_code %>  class="btn-download" download>Download QR Code</a>
         </div>
         

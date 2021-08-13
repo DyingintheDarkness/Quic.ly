@@ -29,6 +29,7 @@ app.get("/history/*", (req, res) => {
   res.render("404.html");
 });
 app.get("/",(req, res) => {
+  let id = uniqid();
   const url = req.query.url;
   const full_url = `${req.protocol}//${req.get("host")}/`;
   res.render("index.html", {
@@ -36,14 +37,14 @@ app.get("/",(req, res) => {
     qr_code: qr_code,
     url: url,
     local: localStorage,
-    full_url: full_url
+    full_url: full_url,
+    id: id
   });
 
   if (url !== undefined) {
     QRCode.toDataURL(url, function (err, qrcode) {
       return (qr_code = qrcode);
     });
-    const id = uniqid();
     let exists = false;
     if (localStorage) {
       for (let i = 0; i < localStorage._keys.length; i++) {

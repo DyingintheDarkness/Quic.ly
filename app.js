@@ -28,7 +28,7 @@ app.get("/history", (req, res) => {
 app.get("/history/*", (req, res) => {
   res.render("404.html");
 });
-app.get("/", (req, res) => {
+app.get("/",(req, res) => {
   const url = req.query.url;
   const full_url = `${req.protocol}//${req.get("host")}/`;
   res.render("index.html", {
@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
     full_url: full_url
   });
 
-  if (url !== undefined && url.indexOf(full_url > -1)) {
+  if (url !== undefined) {
     QRCode.toDataURL(url, function (err, qrcode) {
       return (qr_code = qrcode);
     });

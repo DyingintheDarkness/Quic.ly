@@ -6,6 +6,9 @@
   box-sizing: border-box;
   font-size: 62.5%;
 }
+html{
+overflow: hidden;
+}
 body {
   font-family: "Poppins", sans-serif;
   overflow: hidden;
@@ -144,7 +147,7 @@ body.dark .link-container ul li p a {
 }
 @media only screen and (max-width: 770px) {
   .link-container ul li p:nth-child(1) {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   .link-container ul li p:nth-child(2) > a {
     font-size: 0.7rem;
@@ -176,11 +179,10 @@ body.dark .link-container ul li p a {
     height: auto;
   }
   .link-container ul li p:nth-child(1) {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   .link-container ul li p:nth-child(2) > a {
     font-size: 0.7rem;
-    white-space: initial;
   }
   .link-container ul li {
     gap: 2rem;
@@ -189,13 +191,13 @@ body.dark .link-container ul li p a {
 
 @media only screen and (max-width: 500px) {
   .link-container ul li p:nth-child(1) > a {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   }
 }
 
 @media only screen and (max-width: 400px) {
   .link-container ul li p:nth-child(1) {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     margin-left: -5%;
   }
   .link-container ul li p:nth-child(2) > a {
@@ -211,9 +213,6 @@ body.dark .link-container ul li p a {
   }
   li i {
     font-size: 1.3rem;
-  }
-  .link-container ul li p:nth-child(1) > a {
-    font-size: 0.6rem;
   }
   .link-container ul li p:nth-child(2) > a {
     font-size: 0.55rem;

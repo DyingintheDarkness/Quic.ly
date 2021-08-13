@@ -1,3 +1,5 @@
+// Made by DyingintheDarkness
+// https://github.com/DyingintheDarkness
 const express = require("express");
 const app = express();
 const uniqid = require("uniqid");
@@ -5,11 +7,17 @@ const path = require("path");
 const port = 5000;
 var QRCode = require("qrcode");
 let qr_code;
+let newqrcode;
+
+// Setting Up localStorage
+
 if (typeof localStorage === "undefined" || localStorage === null) {
   var LocalStorage = require("node-localstorage").LocalStorage;
   localStorage = new LocalStorage("./localStorage");
 }
-let newqrcode;
+
+// Setting Up Engine
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
@@ -19,17 +27,9 @@ app.listen(port, (req, res) => {
 Localhost : http://localhost:${port}/
   `);
 });
-app.get("/history", (req, res) => {
-  const full_url = `${req.protocol}//${req.get("host")}/`;
-  res.render("history.html", {
-    ids: localStorage._keys,
-    local: localStorage,
-    full_url: full_url,
-  });
-});
-app.get("/history/*", (req, res) => {
-  res.render("404.html");
-});
+
+// Homepage
+
 app.get("/", (req, res) => {
   let id = uniqid();
   qr_code =
@@ -45,7 +45,6 @@ app.get("/", (req, res) => {
     full_url: full_url,
     id: id,
   });
-
   if (url !== undefined) {
     QRCode.toDataURL(url, function (err, qrcode) {
       newqrcode = qrcode;
@@ -67,6 +66,21 @@ app.get("/", (req, res) => {
   }
   redirectLink(localStorage);
 });
+
+// History Page
+
+app.get("/history", (req, res) => {
+  const full_url = `${req.protocol}//${req.get("host")}/`;
+  res.render("history.html", {
+    ids: localStorage._keys,
+    local: localStorage,
+    full_url: full_url,
+  });
+});
+app.get("/history/*", (req, res) => {
+  res.render("404.html");
+});
+
 const redirectLink = (localStorage) => {
   let urlExists = false;
   let url;
@@ -82,7 +96,6 @@ const redirectLink = (localStorage) => {
         break;
       }
     }
-    console.log(urlExists);
     if (urlExists) {
       res.redirect(url);
       urlExists = false;

@@ -64,11 +64,11 @@
 
         <div class="qrcode-container">
           <div class="img-container">
-            <img src=<%= qr_code %> alt="">
+          <% let qr = qr_code || oldqr %>
+            <img src=<%= qr %> alt="">
           </div>
           <p>We autogenerate QR codes <br> for the urls that you provide</p>
-          <% let qr = qr_code || oldqr %>
-          <a href=<%= qr_code %>  class="btn-download" download>Download QR Code</a>
+          <a href=<%= qr %>  class="btn-download" download>Download QR Code</a>
         </div>
         
     <script>
